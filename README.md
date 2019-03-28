@@ -55,9 +55,11 @@ Link to current contents of:
 
 This file is probably not going to be used but:
 
-    - hosts: servers
-      roles:
-         - { role: cjsteel.model, x: 42 }
+```shell
+- hosts: servers
+  roles:
+     - { role: cjsteel.model, x: 42 }
+```
 
 ### molecule/lxd/playbook.yml
 
