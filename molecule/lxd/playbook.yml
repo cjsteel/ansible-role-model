@@ -18,8 +18,8 @@
   pre_tasks:
     - debug:
         var: providers_project_directory
-  roles:
-    - role: cjsteel.providers
+#  roles:
+#    - role: cjsteel.providers
 
 # Normal playbook stuff starts here
 #
@@ -30,7 +30,7 @@
     pip_debug: true
     pip_install_type: 'packages'
     pip_install_from_packages:
-    
+
       - name: molecule
         state: present
         version: "2.20.0.0a1"
@@ -50,12 +50,11 @@
     vagrant_version: 2.2.3
     vagrant_virtualbox_install: false
 
-#  galaxy roles below must be in projects requirements.yml file in order to work
-#
-#
+  # galaxy roles below must be in projects requirements.yml file in order to work
+
   roles:
     - role: cjsteel.model
-    - role: cjsteel.pip
+    # - role: cjsteel.pip
     # - role: geerlingguy.docker
     # - role: weareinteractive.users
     # - role: jdauphant.vagrant
