@@ -2,5 +2,4 @@
 - name: Converge
   hosts: all
   roles:
-    - role: cjsteel.providers_role_test
-
+    - role: cjsteel.model
