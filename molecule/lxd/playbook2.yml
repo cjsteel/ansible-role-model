@@ -6,6 +6,17 @@
 #
 - name: Converge
   hosts: all
+  pre_tasks:
+
+    - set_fact: fact_controller_user="{{ lookup('env','USER') }}"
+    - debug: var=fact_controller_user
+
+    - set_fact: fact_controller_home="{{ lookup('env','HOME') }}"
+    - debug: var=fact_controller_home
+
+    - set_fact: fact_project_path="{{ lookup('pipe','pwd') }}"
+    - debug: var=fact_project_path
+
   vars:
     pip_install_packages:
       - docker
@@ -20,8 +31,11 @@
 
   roles:
     - role: cjsteel.model
-    # - role: geerlingguy.clamav
-    # - role: geerlingguy.pip
-    # - role: geerlingguy.docker
-    # - role: weareinteractive.users
-    # - role: jdauphant.vagrant
+    - role: gantsign.fd
+    - role: robertdebock.atom
+    - role: robertdebock.powertop
+    - role: csteel.myrepos
+      vars:
+        - myrepos_local_user: '{{ fact_controller_user }}'
+        - myrepos_local_home: '{{ fact_controller_home }}'
+        - myrepos_local_resources_root: '{{ fact_controller_home }}'
